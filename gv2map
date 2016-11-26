@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eu
+
+readonly input="$1"
+readonly output="$2"
+readonly format="${2##*.}"
+
+
+sfdp -Goverlap=prism $input | \
+	gvmap -e | \
+	neato -Ecolor="#55555522" -n2 -T$format > $output
